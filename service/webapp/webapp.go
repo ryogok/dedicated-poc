@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 func init() {
@@ -24,7 +25,9 @@ func hello(w http.ResponseWriter, req *http.Request) {
 
 	url := &url.URL{}
 	url.Scheme = "http"
-	url.Host = "localhost:8081"
+	targetHost := getEnv("TARGET_HOST", "localhost")
+	targetPort := getEnv("TARGET_PORT", "8081")
+	url.Host = fmt.Sprintf("%s:%s", targetHost, targetPort)
 	urlStr := url.String()
 
 	rsp, err := http.Get(urlStr)
@@ -39,4 +42,11 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	log.Println("request sent to compute succeeded")
 	body, _ := ioutil.ReadAll(rsp.Body)
 	fmt.Fprintln(w, string(body))
+}
+
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
 }
