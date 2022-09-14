@@ -1,13 +1,17 @@
 package model
 
+import (
+	"webapp/table"
+)
+
 func GetTUForModel(modelName string) (string, error) {
-	return "entity", nil
+	return table.GetEntity(modelName)
 }
 
 func GetAllTUs() (string, error) {
-	return "all entities", nil
+	return table.GetAllEntities()
 }
 
 func UpdateTUForModel(modelName string, throughputUnit int) error {
-	return nil
+	return table.UpdateEntity(modelName, throughputUnit)
 }

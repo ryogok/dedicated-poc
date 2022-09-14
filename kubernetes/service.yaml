@@ -57,6 +57,8 @@ spec:
           value: "compute.ryogokpoc.svc.cluster.local"
         - name: TARGET_PORT
           value: "8081"
+        - name: AZURE_STORAGE_CONNECTION_STRING
+          value: "<connection_string>"
         ports:
         - containerPort: 8080
 ---
