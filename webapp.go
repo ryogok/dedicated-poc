@@ -8,6 +8,8 @@ import (
 	"net/url"
 	"os"
 	"strconv"
+
+	"webapp/model"
 )
 
 func init() {
@@ -65,7 +67,7 @@ func processManagementRequest(w http.ResponseWriter, req *http.Request) {
 	case "GET":
 		modelName := req.URL.Query().Get("modelName")
 		if len(modelName) == 0 {
-			rsp, err := getAllEntities()
+			rsp, err := model.GetAllTUs()
 			if err != nil {
 				log.Println("getAllEntities() failed")
 				http.Error(w, "Failed to get entities", http.StatusInternalServerError)
@@ -75,7 +77,7 @@ func processManagementRequest(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		rsp, err := getEntity(modelName)
+		rsp, err := model.GetTUForModel(modelName)
 		if err != nil {
 			log.Println("getAllEntity() failed")
 			errMsg := fmt.Sprintf("Failed to get entity for %s", modelName)
@@ -106,7 +108,7 @@ func processManagementRequest(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		err = updateEntity(modelName, throughputUnit)
+		err = model.UpdateTUForModel(modelName, throughputUnit)
 		if err != nil {
 			log.Println("updateEntity() failed")
 			errMsg := fmt.Sprintf("Failed to update entity for %s", modelName)
@@ -120,18 +122,6 @@ func processManagementRequest(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 
-}
-
-func getEntity(modelName string) (string, error) {
-	return "entity", nil
-}
-
-func getAllEntities() (string, error) {
-	return "all entities", nil
-}
-
-func updateEntity(modelName string, throughputUnit int) error {
-	return nil
 }
 
 func getEnv(key, fallback string) string {

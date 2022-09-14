@@ -3,12 +3,9 @@ FROM golang:1.19 AS build
 
 WORKDIR /app
 
-COPY go.mod ./
+COPY . .
 RUN go mod download
-
-COPY service/ /app/service/
-WORKDIR /app/service/compute
-RUN go build -o /compute
+RUN go build -o /compute compute.go
 
 ### Copy app to runtime container
 FROM gcr.io/distroless/base-debian10
