@@ -45,6 +45,14 @@ spec:
         image: ryogokacr.azurecr.io/webapp:v1.0
         imagePullPolicy: IfNotPresent
         env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         - name: TARGET_HOST
           value: "compute.ryogokpoc.svc.cluster.local"
         - name: TARGET_PORT
@@ -98,5 +106,14 @@ spec:
       - name: compute
         image: ryogokacr.azurecr.io/compute:v1.0
         imagePullPolicy: IfNotPresent
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         ports:
         - containerPort: 8081
