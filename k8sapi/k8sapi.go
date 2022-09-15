@@ -1,3 +1,5 @@
+// Reference: https://github.com/kubernetes/client-go/tree/master/examples/create-update-delete-deployment
+
 package k8sapi
 
 import (

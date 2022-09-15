@@ -1,3 +1,5 @@
+// Reference: https://docs.microsoft.com/en-us/azure/cosmos-db/table/how-to-use-go?tabs=bash
+
 package table
 
 import (
