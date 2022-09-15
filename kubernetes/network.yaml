@@ -53,6 +53,14 @@ spec:
     - destination:
         host: compute.ryogokpoc.svc.cluster.local
         subset: p2
+  - match:
+    - queryParams:
+        modelName:
+          exact: c
+    route:
+    - destination:
+        host: compute.ryogokpoc.svc.cluster.local
+        subset: p1
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
