@@ -28,3 +28,42 @@ spec:
         host: webapp.ryogokpoc.svc.cluster.local
         port:
           number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: compute
+spec:
+  hosts:
+  - compute.ryogokpoc.svc.cluster.local
+  http:
+  - match:
+    - queryParams:
+        modelName:
+          exact: a
+    route:
+    - destination:
+        host: compute.ryogokpoc.svc.cluster.local
+        subset: p1
+  - match:
+    - queryParams:
+        modelName:
+          exact: b
+    route:
+    - destination:
+        host: compute.ryogokpoc.svc.cluster.local
+        subset: p2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: compute
+spec:
+  host: compute.ryogokpoc.svc.cluster.local
+  subsets:
+  - name: p1
+    labels:
+      partition: p1
+  - name: p2
+    labels:
+      partition: p2
