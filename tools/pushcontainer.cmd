@@ -1,6 +1,6 @@
 @echo off
 
-pushd "%~dp0"
+pushd "%~dp0\.."
 
 echo Pushing compute container
 docker tag compute ryogokacr.azurecr.io/compute:v1.0

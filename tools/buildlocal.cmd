@@ -1,6 +1,6 @@
 @echo off
 
-pushd "%~dp0"
+pushd "%~dp0\.."
 
 echo Building...
 go build ./cmd/webapp

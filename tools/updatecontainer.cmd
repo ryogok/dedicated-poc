@@ -1,6 +1,6 @@
 @echo off
 
-pushd "%~dp0"
+pushd "%~dp0\.."
 
 echo Deploying service.yaml...
 kubectl apply -n ryogokpoc -f kubernetes\service.yaml
