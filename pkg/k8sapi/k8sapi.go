@@ -8,13 +8,14 @@ import (
 	"fmt"
 	"log"
 	"strings"
-	"webapp/types"
 
 	appsv1 "k8s.io/api/apps/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	v1 "k8s.io/client-go/kubernetes/typed/apps/v1"
 	"k8s.io/client-go/rest"
+
+	"github.com/ryogok/dedicated-poc/pkg/types"
 )
 
 var deploymentsClient v1.DeploymentInterface

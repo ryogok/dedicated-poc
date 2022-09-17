@@ -3,8 +3,8 @@
 pushd "%~dp0"
 
 echo Building...
-go build webapp.go
-go build compute.go
+go build ./cmd/webapp
+go build ./cmd/compute
 
 popd
 

@@ -10,11 +10,12 @@ import (
 	"log"
 	"os"
 	"time"
-	"webapp/types"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
 	"github.com/google/uuid"
+
+	"github.com/ryogok/dedicated-poc/pkg/types"
 )
 
 var modelClient *aztables.Client

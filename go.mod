@@ -1,4 +1,4 @@
-module webapp
+module github.com/ryogok/dedicated-poc
 
 go 1.19
 

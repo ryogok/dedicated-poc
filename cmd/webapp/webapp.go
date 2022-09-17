@@ -9,7 +9,7 @@ import (
 	"os"
 	"strconv"
 
-	"webapp/model"
+	"github.com/ryogok/dedicated-poc/pkg/model"
 )
 
 func init() {

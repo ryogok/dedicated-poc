@@ -3,8 +3,8 @@ package model
 import (
 	"log"
 
-	"webapp/k8sapi"
-	"webapp/table"
+	"github.com/ryogok/dedicated-poc/pkg/k8sapi"
+	"github.com/ryogok/dedicated-poc/pkg/table"
 )
 
 func GetTUForModel(modelName string) (string, error) {
